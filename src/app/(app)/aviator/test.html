@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GetSinals</title>
+
+    <style>
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
+            display: block;
+        }
+
+        body {
+            line-height: 1;
+        }
+
+        ol,
+        ul {
+            list-style: none;
+        }
+
+        body {
+
+            background-color: black;
+
+        }
+
+
+        .signal_component {
+            background-color: #101012;
+            padding: 20px;
+            border-radius: 16px;
+            width: 100%;
+            height: 330px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+           
+
+            .fade-in {
+                animation: fadeIn 1s ease-in-out;
+            }
+        }
+        .green{
+            color: green;
+        }
+        .red{
+            color: #a00000;
+        }
+
+        .messages-live {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 8px;
+            color: white;
+            width: 100%;
+            max-width: 100%;
+            background-color: #a00000;
+
+        }
+
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+
+        }
+
+        .box span {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            height: 80px;
+            color: white;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .exit-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background-color: black;
+            border-radius: 8px;
+            height: 50px;
+        }
+
+        .result {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 25px;
+        }
+
+        .result span {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            height: 80px;
+            color: white;
+            margin: 0 auto;
+            width: 50%;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .loader {
+            border-width: 3px;
+            border-style: solid;
+            border-color: rgb(26, 38, 146) rgb(243, 243, 243) rgb(243, 243, 243);
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .messages-result {
+            display: flex;
+            gap: 10px;
+            overflow-x: scroll;
+            flex-direction: column;
+            color: white;
+        }
+
+        ul {
+            display: flex;
+            gap: 10px;
+            max-width: 100%;
+            overflow-x: scroll;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+        }
+
+
+
+        li {
+            min-width: 160px;
+            font-size: 10px;
+            list-style: none;
+            color: white;
+            background-color: black;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #1a2692;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="signal_component">
+        <div class="box">
+            <span>
+                <h3>Entar após:</h3>
+                <div class="exit-container">
+                    <p class="signalContainer">
+                    <div class="loader"></div>
+                    </p>
+                </div>
+            </span>
+        </div>
+        <div class="result">
+            <span>
+                <h3>Proteções:</h3>
+                <div class="exit-container">
+
+                    <p class="protection">
+                    <div class="loader"></div>
+
+                    </p>
+                </div>
+            </span>
+
+            <span>
+                <h3>Sair após:</h3>
+                <div class="exit-container">
+
+                    <p class="after">
+                      
+                    <div class="loader"></div>
+
+                    </p>
+                </div>
+            </span>
+
+        </div>
+
+        <div class="messages-live"></div>
+
+        <div class="messages-result">
+            <ul class="resultUl">
+            </ul>
+        </div>
+    </div>
+
+
+
+
+    <script>
+
+        const baseUrl = "https://api.velas10x.com.br/game/6";
+        const requestHeaders = {
+            "Content-Type": "application/json",
+        };
+
+        let messagesResult = [];
+
+        let messages = [
+            "Buscando padrões",
+            "Analisando as velas",
+            "Processando dados",
+            "Procurando a melhor oportunidade de entrada",
+        ];
+        let messageAnalytcs = "Iniciando análise";
+
+        const getSignals = async () => {
+            const signal = await fetch(`${baseUrl}`, {
+                method: "GET",
+                headers: requestHeaders,
+            }).then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    response.json().then((respError) => {
+                        alert(`${respError.message}`);
+                    });
+                }
+            });
+            if (signal.signalEntity.message_result_signal) {
+                let message = signal.signalEntity.message_result_signal;
+                if (!messagesResult.includes(message)) {
+                    messagesResult.unshift(message);
+                    createHistoric()
+                }
+            }
+
+            return signal;
+        };
+
+        const renderSignal =  async () => {
+
+            const messagesValues = document.querySelector(".messages-live")
+            const signalValue = document.querySelector(".signalContainer")
+            const protection = document.querySelector(".protection")
+            const after = document.querySelector(".after")
+            
+
+            const signal = await getSignals();
+            let message = "";
+
+            if (signal.signalEntity.message_signal == "Analisando...") {
+                message = messageAnalytcs;
+            } else {
+                message = signal.signalEntity.message_signal;
+            }
+
+            messagesValues.innerText = `${message}`
+            const loader = document.querySelectorAll(".loader")
+            if (signal.signalEntity.number_signal) {
+                loader.forEach(load => {
+
+                    load.style.display = "none";
+                })
+
+                if(Number(signal.signalEntity.number_signal)>=2){
+                    signalValue.classList.add("green")
+                }
+                else{
+                    signalValue.classList.add("red")
+
+                }
+                signalValue.innerText = `${signal.signalEntity.number_signal} x`
+
+                protection.innerText = "Até 3 Gales"
+                after.innerHTML = "<p class= 'green'>Alto: 2 x</p> <p class='red'>Baixo: 10 x"
+            }
+            else {
+                loader.forEach(load => {
+
+                    load.style.display = "flex";
+                })
+                signalValue.innerText = ``
+                protection.innerText = ""
+                after.innerText = ""
+
+
+
+            }
+
+
+        };
+
+        const updateMessageAnalytcs = () => {
+            let randomIndex = Math.floor(Math.random() * messages.length);
+            messageAnalytcs = messages[randomIndex];
+        };
+
+        const intervalId = setInterval(renderSignal, 1000);
+
+        const signalsInterval = setInterval(updateMessageAnalytcs, 8000);
+        renderSignal()
+
+        const createHistoric = () => {
+
+            const ul = document.querySelector(".resultUl")
+            ul.innerHTML=""
+
+            messagesResult.map((message) => {
+                const li = document.createElement("li");
+                const parts = message.split("-");
+                if(Number(parts[1])>=2){
+                    li.classList.add("green")
+                }
+                else{
+                    li.classList.add("red")
+                }
+                li.innerText = `${parts[0]} - ${parts[1]}`;
+                ul.append(li);
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>

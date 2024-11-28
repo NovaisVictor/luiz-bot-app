@@ -14,42 +14,58 @@ export function NavMenu() {
             className={`bg-secondary p-3.5 rounded-full bg-gradient-to-r from-primary/40 to-accent`}
           >
             <div className="flex justify-around items-center">
-              <Link
-                href={'/'}
-                className={cn(
-                  'rounded-full p-3',
-                  pathName === '/' && 'bg-primary',
-                )}
-              >
-                <HomeIcon className="" />
-              </Link>
-              <Link
-                href={'/live'}
-                className={cn(
-                  'rounded-full p-3',
-                  pathName === '/live' && 'bg-primary',
-                )}
-              >
-                <Video />
-              </Link>
-              <Link
-                href={'/aviator'}
-                className={cn(
-                  'rounded-full p-3',
-                  pathName === '/aviator' && 'bg-primary',
-                )}
-              >
-                <Gamepad2 />
-              </Link>
-              <Link
-                href={'/course'}
-                className={cn(
-                  'rounded-full p-3',
-                  pathName === '/course' && 'bg-primary',
-                )}
-              >
-                <CircleArrowRight />
-              </Link>
+              <div className="flex flex-col items-center justify-center space-y-0 gap-0">
+                <Link
+                  href={'/'}
+                  className={cn(
+                    'rounded-full p-3',
+                    pathName === '/' &&
+                      'bg-primary -translate-y-2 transition-all',
+                  )}
+                >
+                  <HomeIcon className="" />
+                </Link>
+                <p>Home</p>
+              </div>
+              <div className="flex flex-col items-center justify-center space-y-0 gap-0">
+                <Link
+                  href={'/live'}
+                  className={cn(
+                    'rounded-full p-3',
+                    pathName === '/live' &&
+                      'bg-primary -translate-y-2 transition-all',
+                  )}
+                >
+                  <Video />
+                </Link>
+                <p>Lives</p>
+              </div>
+              <div className="flex flex-col items-center justify-center space-y-0 gap-0">
+                <Link
+                  href={'/aviator'}
+                  className={cn(
+                    'rounded-full p-3',
+                    pathName === '/aviator' &&
+                      'bg-primary -translate-y-2 transition-all',
+                  )}
+                >
+                  <Gamepad2 />
+                </Link>
+                <p>Aviator</p>
+              </div>
+              <div className="flex flex-col items-center justify-center space-y-0 gap-0">
+                <Link
+                  href={'/course'}
+                  className={cn(
+                    'rounded-full p-3',
+                    pathName === '/course' &&
+                      'bg-primary -translate-y-2 transition-all',
+                  )}
+                >
+                  <CircleArrowRight />
+                </Link>
+                <p>Curso</p>
+              </div>
             </div>
           </div>
         </div>

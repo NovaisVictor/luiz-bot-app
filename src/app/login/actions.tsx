@@ -8,5 +8,5 @@ export async function loginAction(formData: FormData) {
   const email = formData.get('email')?.toString()
   const cookieStore = await cookies()
   cookieStore.set('token', email!)
-  redirect(`/`)
+  redirect(`/sign-up`)
 }
