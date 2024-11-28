@@ -1,5 +1,6 @@
-import { Apple, Bot } from 'lucide-react'
+import Apple from '@/assets/apple'
 import { GradiantCard } from './gradiant-card'
+import Android from '@/assets/android'
 
 export function InstallAppCard() {
   return (
@@ -8,8 +9,8 @@ export function InstallAppCard() {
         <h3>Instale nosso app</h3>
 
         <div className="flex justify-center gap-4">
-          <Apple />
-          <Bot />
+          <Apple className="size-12 dark:fill-white" />
+          <Android className="size-12 dark:fill-white" />
         </div>
       </div>
     </GradiantCard>
