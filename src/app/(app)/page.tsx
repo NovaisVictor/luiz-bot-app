@@ -3,6 +3,7 @@ import { GradiantCard } from '@/components/gradiant-card'
 import { InstallAppCard } from '@/components/install-app-card'
 import { Button } from '@/components/ui/button'
 import { Play } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -20,8 +21,8 @@ export default function Home() {
       </GradiantCard>
       <GradiantCard>
         <div className="flex flex-col justify-center gap-4">
-          <Button className="py-8 text-xl font-bold rounded-3xl">
-            Cadastrar na Plataforma Segura
+          <Button className="py-8 text-xl font-bold rounded-3xl" asChild>
+            <Link href={'/sign-up'}>Cadastrar na Plataforma Segura</Link>
           </Button>
           <p className="text-center">
             Faça seu cadsatro na Única Plataforma Segura que eu INDÍCO e saque
