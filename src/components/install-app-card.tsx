@@ -1,6 +1,15 @@
 import Apple from '@/assets/apple'
 import { GradiantCard } from './gradiant-card'
 import Android from '@/assets/android'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from './ui/dialog'
+import { CirclePlus, Share } from 'lucide-react'
 
 export function InstallAppCard() {
   return (
@@ -9,8 +18,105 @@ export function InstallAppCard() {
         <h3>Instale nosso app</h3>
 
         <div className="flex justify-center gap-4">
-          <Apple className="size-12 dark:fill-white" />
-          <Android className="size-12 dark:fill-white" />
+          <Dialog>
+            <DialogTrigger>
+              <Apple className="size-12 dark:fill-white" />
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Instale nosso App</DialogTitle>
+                <DialogDescription>
+                  Siga as etapas abaixo e instale o nosso app em seu
+                  dispositivo.
+                </DialogDescription>
+              </DialogHeader>
+              <Apple className="size-12 dark:fill-white mx-auto" />
+
+              <h5 className="text-center font-semibold">IOS (Safari)</h5>
+              <div className="grid gap-4 py-4">
+                <div className="grid grid-cols-2 items-center">
+                  <div className="mx-auto border text-primary h-24 w-2/3 flex justify-center items-center rounded-md border-primary text-xl font-bold">
+                    01
+                  </div>
+                  <div className="flex items-center gap-2 pr-6">
+                    <p>Clique no símbolo de compartilhar</p>
+                    <Share size={32} />
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 items-center">
+                  <div className="mx-auto border text-primary h-24 w-2/3 flex justify-center items-center rounded-md border-primary text-xl font-bold">
+                    02
+                  </div>
+                  <div className="flex items-center gap-2 pr-6">
+                    <p>Procure o botão “Tela de Início”</p>
+                    <CirclePlus size={32} />
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 items-center">
+                  <div className="mx-auto border text-primary h-24 w-2/3 flex justify-center items-center rounded-md border-primary text-xl font-bold">
+                    03
+                  </div>
+                  <div className="flex items-center gap-2 pr-6">
+                    <p>Adicione o app a tela de início</p>
+                  </div>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
+          <Dialog>
+            <DialogTrigger>
+              <Android className="size-12 dark:fill-white" />
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Instale nosso App</DialogTitle>
+                <DialogDescription>
+                  Siga as etapas abaixo e instale o nosso app em seu
+                  dispositivo.
+                </DialogDescription>
+              </DialogHeader>
+              <Android className="size-12 dark:fill-white mx-auto" />
+
+              <h5 className="text-center font-semibold">
+                Android (Google Chrome)
+              </h5>
+              <div className="grid gap-4 py-4">
+                <div className="grid grid-cols-2 items-center">
+                  <div className="mx-auto border text-primary h-24 w-2/3 flex justify-center items-center rounded-md border-primary text-xl font-bold">
+                    01
+                  </div>
+                  <div className="flex items-center gap-2 pr-6">
+                    <p>
+                      Clique no icone de “Mais opções” no canto superior
+                      direito.
+                    </p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 items-center">
+                  <div className="mx-auto border text-primary h-24 w-2/3 flex justify-center items-center rounded-md border-primary text-xl font-bold">
+                    02
+                  </div>
+                  <div className="flex items-center gap-2 pr-6">
+                    <p>
+                      Clique em “Instalar Aplicativo” ou “Adicionar a tela
+                      inicial”
+                    </p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 items-center">
+                  <div className="mx-auto border text-primary h-24 w-2/3 flex justify-center items-center rounded-md border-primary text-xl font-bold">
+                    03
+                  </div>
+                  <div className="flex items-center gap-2 pr-6">
+                    <p>
+                      Confirme a ação clicando em “Instalar” no popup que
+                      aparecerá na tela.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </GradiantCard>

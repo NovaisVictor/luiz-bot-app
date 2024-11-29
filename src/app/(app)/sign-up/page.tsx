@@ -1,8 +1,11 @@
+import { PixInfinit } from '@/components/pix-infinit'
 import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 export default function SignUp() {
   return (
     <div className="h-screen flex flex-col gap-12">
+      <PixInfinit />
       <div className="text-center">
         <h1 className="text-xl font-bold">
           Registre-se na <span className="text-primary">Sorte na Bet:</span>
@@ -17,10 +20,11 @@ export default function SignUp() {
         />
       </div>
       <div className="space-y-4 px-10">
-        <Button className="w-full uppercase py-8">Concluir Cadastro</Button>
-        <Button className="w-full uppercase py-8 bg-violet-800">
-          Já tenho conta
-        </Button>
+        <Link href={'/'}>
+          <Button className="w-full uppercase py-8 bg-violet-800">
+            Já tenho conta
+          </Button>
+        </Link>
       </div>
     </div>
   )

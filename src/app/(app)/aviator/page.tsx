@@ -1,9 +1,14 @@
+import { PixInfinit } from '@/components/pix-infinit'
+import SignalComponent from './signal'
+
 export default function Aviator() {
   return (
     <div className="">
       <div className="w-screen h-screen flex flex-col px-10 gap-12">
-        <div>`pix` pix pix pix pix pix pix pix</div>
-
+        <PixInfinit />
+        <div className="w-11/12">
+          <SignalComponent />
+        </div>
         <div className="h-full">
           <iframe
             className="h-full w-11/12"
