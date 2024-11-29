@@ -8,11 +8,12 @@ import {
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { loginAction } from './actions'
+import Image from 'next/image'
 
 export default function Login() {
   return (
     <div className="h-screen w-screen flex justify-center items-center flex-col gap-12 px-20">
-      <h1 className="text-4xl font-bold">Logo</h1>
+      <Image src={'/LOGO.png'} width={200} height={80} alt="" />
       <Card className="w-[350px]">
         <CardHeader>
           <CardTitle>Login</CardTitle>
