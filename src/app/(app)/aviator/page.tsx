@@ -2,7 +2,7 @@ export default function Aviator() {
   return (
     <div className="">
       <div className="w-screen h-screen flex flex-col px-10 gap-12">
-        <div>pix pix pix pix pix pix pix pix</div>
+        <div>`pix` pix pix pix pix pix pix pix</div>
 
         <div className="h-full">
           <iframe
