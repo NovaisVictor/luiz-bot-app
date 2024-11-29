@@ -13,7 +13,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`dark antialiased overflow-x-hidden`}>{children}</body>
+      <body
+        className={`dark antialiased overflow-x-hidden bg-gradient-to-b from-primary/40 to-black`}
+      >
+        {children}
+      </body>
     </html>
   )
 }

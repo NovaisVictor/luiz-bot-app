@@ -1,35 +1,30 @@
 import { Button } from '@/components/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { loginAction } from './actions'
 import Image from 'next/image'
+import { PixInfinit } from '@/components/pix-infinit'
 
 export default function Login() {
   return (
-    <div className="h-screen w-screen flex justify-center items-center flex-col gap-12 px-20">
+    <div className="h-screen w-screen flex justify-center items-center flex-col gap-12 px-8">
+      <div className="absolute top-10">
+        <PixInfinit />
+      </div>
       <Image src={'/LOGO.png'} width={200} height={80} alt="" />
-      <Card className="w-[350px]">
-        <CardHeader>
-          <CardTitle>Login</CardTitle>
-          <CardDescription>
-            Insira seu e-mail para entrar no app
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form action={loginAction} className="space-y-4">
-            <Input name="email" type="email" required placeholder="email..." />
-            <Button className="w-full" type="submit">
-              Entrar
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
+
+      <form action={loginAction} className="space-y-4">
+        <p>Para acessar sua conta, digite seu e-mail abaixo:</p>
+        <Input
+          name="email"
+          type="email"
+          required
+          placeholder="Digite o seu Email"
+          className="border border-primary"
+        />
+        <Button className="w-full" type="submit">
+          Entrar
+        </Button>
+      </form>
     </div>
   )
 }
