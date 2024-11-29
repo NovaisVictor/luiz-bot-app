@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import React, { useEffect, useState } from 'react'
 
@@ -84,7 +85,7 @@ const SignalComponent = () => {
       clearInterval(intervalId)
       clearInterval(signalsInterval)
     }
-  }, [])
+  }, [renderSignal, updateMessageAnalytics])
 
   const createHistoric = () => {
     return messagesResult.map((message, index) => {
@@ -107,7 +108,7 @@ const SignalComponent = () => {
       <div className="flex items-center justify-center gap-2">
         <span className="flex flex-col gap-2">
           <h3>Entrar após:</h3>
-          <div className="flex items-center justify-center bg-black rounded-lg h-12 overflow-hidden">
+          <div className="flex items-center justify-center bg-black rounded-lg h-12">
             {loading ? (
               <Loader />
             ) : (

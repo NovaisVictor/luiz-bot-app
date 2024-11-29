@@ -1,7 +1,8 @@
+import Plus18 from '@/assets/plus-18'
 import { GradiantCard } from '@/components/gradiant-card'
 import { InstallAppCard } from '@/components/install-app-card'
 import { Button } from '@/components/ui/button'
-import { Ban, Play } from 'lucide-react'
+import { Play } from 'lucide-react'
 
 export default function Home() {
   return (
@@ -26,8 +27,9 @@ export default function Home() {
             Faça seu cadsatro na Única Plataforma Segura que eu INDÍCO e saque
             seus possíveis lucros com tranquilidade!
           </p>
-          <span className="flex gap-2 justify-center">
-            <Ban /> Jogue com responsabilidade!
+          <span className="flex gap-2 justify-center items-center">
+            <Plus18 className="size-7 fill-white" />
+            Jogue com responsabilidade!
           </span>
         </div>
       </GradiantCard>

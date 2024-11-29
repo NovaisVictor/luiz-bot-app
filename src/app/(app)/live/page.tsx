@@ -1,8 +1,8 @@
+import Plus18 from '@/assets/plus-18'
 import { GradiantCard } from '@/components/gradiant-card'
 import { InstallAppCard } from '@/components/install-app-card'
 import { Button } from '@/components/ui/button'
-import { Ban, Play, Send } from 'lucide-react'
-
+import { Play, Send } from 'lucide-react'
 export default function Live() {
   return (
     <div className="flex flex-col gap-6 justify-center">
@@ -30,7 +30,8 @@ export default function Live() {
           </Button>
 
           <span className="flex gap-2 justify-center items-center text-primary text-sm">
-            <Ban size={18} /> Jogue com responsabilidade!
+            <Plus18 className="size-6 fill-primary" />
+            Jogue com responsabilidade!
           </span>
         </div>
       </GradiantCard>
