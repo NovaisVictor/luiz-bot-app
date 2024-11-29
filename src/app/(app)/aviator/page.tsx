@@ -13,7 +13,7 @@ export default function Aviator() {
           <iframe
             className="h-full w-11/12"
             // style="height: 600px; border-radius: 25px; box-shadow: 0 0 31px -4px black;  border-width: 1px;"
-            src="https://go.aff.sortenabet.com/tf9esqb9?utm_campaign=app&utm_content=luiz"
+            src="https://sortenabet.com/games/spribe/aviator"
           />
         </div>
       </div>
