@@ -64,7 +64,7 @@ export function NavMenu() {
                 >
                   <CircleArrowRight />
                 </Link>
-                <p>Curso</p>
+                <p>Aulas</p>
               </div>
             </div>
           </div>
