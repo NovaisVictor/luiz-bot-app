@@ -17,11 +17,11 @@ const data = generateRandomData(10)
 
 export function PixInfinit() {
   return (
-    <Marquee className="overflow-hidden">
+    <Marquee className="overflow-x-hidden">
       {data.map((item, index) => (
         <div
           key={index}
-          className="flex gap-2 items-center bg-accent p-1.5 rounded-full mr-6 overflow-hidden"
+          className="flex gap-2 items-center bg-accent p-1.5 rounded-full mr-6 overflow-x-hidden"
         >
           <Pix className="size-3" />
           <p className="font-bold text-sm">

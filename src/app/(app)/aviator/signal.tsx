@@ -104,7 +104,7 @@ const SignalComponent = () => {
   }
 
   return (
-    <div className="bg-accent p-3 rounded-2xl flex flex-col gap-5 overflow-hidden">
+    <div className="bg-accent p-3 rounded-2xl flex flex-col gap-5 overflow-x-hidden">
       <div className="flex items-center justify-center gap-2">
         <span className="flex flex-col gap-2">
           <h3>Entrar após:</h3>
