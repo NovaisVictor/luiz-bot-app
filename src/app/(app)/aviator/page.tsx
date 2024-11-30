@@ -2,7 +2,7 @@ import SignalComponent from './signal'
 
 export default function Aviator() {
   return (
-    <div className="h-screen flex flex-col gap-12">
+    <div className="h-screen flex flex-col gap-12 overflow-hidden">
       <div className="">
         <SignalComponent />
       </div>
