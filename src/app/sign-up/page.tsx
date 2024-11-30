@@ -1,4 +1,3 @@
-import { Header } from '@/components/header'
 import { PixInfinit } from '@/components/pix-infinit'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
