@@ -25,7 +25,7 @@ export default function Home() {
             <Link href={'/sign-up'}>Cadastrar na Plataforma Segura</Link>
           </Button>
           <p className="text-center">
-            Faça seu cadsatro na Única Plataforma Segura que eu INDÍCO e saque
+            Faça seu cadastro na Única Plataforma Segura que eu INDÍCO e saque
             seus possíveis lucros com tranquilidade!
           </p>
           <span className="flex gap-2 justify-center items-center">

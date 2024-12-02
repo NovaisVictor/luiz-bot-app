@@ -1,73 +1,64 @@
 'use client'
 import { cn } from '@/lib/utils'
-import { CircleArrowRight, Gamepad2, HomeIcon, Video } from 'lucide-react'
+import { HomeIcon, Plane, Play, Video } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 export function NavMenu() {
   const pathName = usePathname()
   return (
-    <div className="fixed bottom-1 right-8 left-8">
-      <div className="relative inline-block p-1 rounded-full w-full ">
-        <div className="bg-gradient-to-r from-primary to-card rounded-full p-0.5">
-          <div
-            className={`bg-secondary p-1.5 rounded-full bg-gradient-to-r from-primary/40 to-accent`}
+    <div className="fixed bottom-0 right-0 left-0">
+      <div className="flex justify-around items-center bg-primary-foreground p-1 pb-4 uppercase font-semibold text-sm">
+        <div className="flex flex-col items-center justify-center space-y-0">
+          <Link
+            href={'/'}
+            className={cn(
+              'p-2 rounded-md',
+              pathName === '/' && 'bg-primary -translate-y-3.5 transition-all',
+            )}
           >
-            <div className="flex justify-around items-center">
-              <div className="flex flex-col items-center justify-center space-y-0 gap-0">
-                <Link
-                  href={'/'}
-                  className={cn(
-                    'rounded-full p-0.5',
-                    pathName === '/' &&
-                      'bg-primary -translate-y-0.5 transition-all',
-                  )}
-                >
-                  <HomeIcon className="" />
-                </Link>
-                <p>Home</p>
-              </div>
-              <div className="flex flex-col items-center justify-center space-y-0 gap-0">
-                <Link
-                  href={'/live'}
-                  className={cn(
-                    'rounded-full p-0.5',
-                    pathName === '/live' &&
-                      'bg-primary -translate-y-0.5 transition-all',
-                  )}
-                >
-                  <Video />
-                </Link>
-                <p>Lives</p>
-              </div>
-              <div className="flex flex-col items-center justify-center space-y-0 gap-0">
-                <Link
-                  href={'/aviator'}
-                  className={cn(
-                    'rounded-full p-0.5',
-                    pathName === '/aviator' &&
-                      'bg-primary -translate-y-0.5 transition-all',
-                  )}
-                >
-                  <Gamepad2 />
-                </Link>
-                <p>Aviator</p>
-              </div>
-              <div className="flex flex-col items-center justify-center space-y-0 gap-0">
-                <Link
-                  href={'/course'}
-                  className={cn(
-                    'rounded-full p-0.5',
-                    pathName === '/course' &&
-                      'bg-primary -translate-y-0.5 transition-all',
-                  )}
-                >
-                  <CircleArrowRight />
-                </Link>
-                <p>Aulas</p>
-              </div>
-            </div>
-          </div>
+            <HomeIcon className="size-8" />
+          </Link>
+          <p>Home</p>
+        </div>
+        <div className="flex flex-col items-center justify-center space-y-0">
+          <Link
+            href={'/live'}
+            className={cn(
+              'p-2 rounded-md',
+              pathName === '/live' &&
+                'bg-primary -translate-y-3.5 transition-all',
+            )}
+          >
+            <Video className="size-8" />
+          </Link>
+          <p>Lives</p>
+        </div>
+        <div className="flex flex-col items-center justify-center space-y-0">
+          <Link
+            href={'/aviator'}
+            className={cn(
+              'p-2 rounded-md',
+              pathName === '/aviator' &&
+                'bg-primary -translate-y-3.5 transition-all',
+            )}
+          >
+            <Plane className="size-8 tex" />
+          </Link>
+          <p>Aviator</p>
+        </div>
+        <div className="flex flex-col items-center justify-center space-y-0">
+          <Link
+            href={'/course'}
+            className={cn(
+              'p-2 rounded-md',
+              pathName === '/course' &&
+                'bg-primary -translate-y-3.5 transition-all',
+            )}
+          >
+            <Play className="size-8" />
+          </Link>
+          <p>Aulas</p>
         </div>
       </div>
     </div>

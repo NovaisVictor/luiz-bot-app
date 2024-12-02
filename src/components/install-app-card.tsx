@@ -9,24 +9,28 @@ import {
   DialogTitle,
   DialogTrigger,
 } from './ui/dialog'
-import { CirclePlus, Share } from 'lucide-react'
+import { CirclePlus, Download, Share } from 'lucide-react'
 
 export function InstallAppCard() {
   return (
     <GradiantCard>
-      <div className="bg-secondary p-4 rounded-md flex flex-col justify-center text-center text-lg font-extrabold gap-4">
+      <div className="bg-secondary p-4 rounded-md flex flex-col items-center justify-center text-center text-lg font-extrabold gap-4">
+        <Download size={32} className="text-primary" />
         <h3>Instale nosso app</h3>
 
-        <div className="flex justify-center gap-4">
+        <div className="grid grid-cols-2 gap-2">
           <Dialog>
             <DialogTrigger>
-              <Apple className="size-12 dark:fill-white" />
+              <div className="flex gap-2 items-center border border-primary p-2 rounded-md">
+                <Apple className="size-8 dark:fill-primary" />
+                IOS
+              </div>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>Instale nosso App</DialogTitle>
                 <DialogDescription>
-                  Siga as etapas abaixo e instale o nosso app em seu
+                  Siga as etapas abaixo e instale sso nosso app em seu
                   dispositivo.
                 </DialogDescription>
               </DialogHeader>
@@ -65,7 +69,10 @@ export function InstallAppCard() {
           </Dialog>
           <Dialog>
             <DialogTrigger>
-              <Android className="size-12 dark:fill-white" />
+              <div className="flex gap-2 items-center border border-primary p-2 rounded-md">
+                <Android className="size-8 dark:fill-primary" />
+                Android
+              </div>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>

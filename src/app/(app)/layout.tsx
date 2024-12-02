@@ -1,5 +1,6 @@
 import { Header } from '@/components/header'
 import { NavMenu } from '@/components/nav-menu'
+import { PixInfinit } from '@/components/pix-infinit'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
@@ -14,10 +15,11 @@ export default async function AppLayout({
     redirect('/login')
   }
   return (
-    <div className="p-8 pb-32">
+    <>
       <Header />
-      {children}
+      <PixInfinit />
+      <div className="p-8 pb-32">{children}</div>
       <NavMenu />
-    </div>
+    </>
   )
 }
