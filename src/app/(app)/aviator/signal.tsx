@@ -59,7 +59,7 @@ const SignalComponent = () => {
     if (signal?.signalEntity?.number_signal) {
       setLoading(false)
       setSignalValue(signal.signalEntity.number_signal)
-      setProtectionText('Até 3 Gales')
+      setProtectionText('Até 3 Proteções')
       setAfterText(
         "<p class='text-green-500'>Alto: 2 x</p> <p class='text-red-600'>Baixo: 10 x</p>",
       )

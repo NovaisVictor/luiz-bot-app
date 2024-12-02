@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Instagram from '@/assets/instagram'
 import Plus18 from '@/assets/plus-18'
 import Telegram from '@/assets/telegram'
@@ -5,7 +6,6 @@ import Youtube from '@/assets/youtube'
 import { GradiantCard } from '@/components/gradiant-card'
 import { InstallAppCard } from '@/components/install-app-card'
 import { Button } from '@/components/ui/button'
-import { Play } from 'lucide-react'
 import Link from 'next/link'
 export default function Live() {
   return (
@@ -15,8 +15,51 @@ export default function Live() {
         de 20X a 100X
       </h1>
       <GradiantCard>
-        <div className="py-14 flex justify-center">
-          <Play className="bg-primary rounded-full p-4" size={64} />
+        <div
+          id="vid_674bdebceb81f8e8fb46e96c"
+          style={{
+            position: 'relative',
+            width: '100%',
+            padding: '56.25% 0 0',
+          }}
+        >
+          <img
+            id="thumb_674bdebceb81f8e8fb46e96c"
+            src="https://images.converteai.net/cd42e2f1-44f3-470d-bb0a-328b0476d231/players/674bdebceb81f8e8fb46e96c/thumbnail.jpg"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              display: 'block',
+            }}
+            alt="thumbnail"
+          />
+          <div
+            id="backdrop_674bdebceb81f8e8fb46e96c"
+            style={{
+              WebkitBackdropFilter: 'blur(5px)',
+              backdropFilter: 'blur(5px)',
+              position: 'absolute',
+              top: 0,
+              height: '100%',
+              width: '100%',
+            }}
+          ></div>
+          <script
+            type="text/javascript"
+            id="scr_674bdebceb81f8e8fb46e96c"
+            dangerouslySetInnerHTML={{
+              __html: `
+            var s = document.createElement("script"); 
+            s.src = "https://scripts.converteai.net/cd42e2f1-44f3-470d-bb0a-328b0476d231/players/674bdebceb81f8e8fb46e96c/player.js"; 
+            s.async = true; 
+            document.head.appendChild(s);
+          `,
+            }}
+          ></script>
         </div>
       </GradiantCard>
       <GradiantCard>
@@ -30,18 +73,14 @@ export default function Live() {
           >
             <Link href={'https://t.me/+GDht0xqX6MIzYWIx'}>
               <Telegram />
-              Entrar no grupo do telegram
+              Clique aqui e entre grupo do telegram
             </Link>
           </Button>
           <Button
             className="uppercase w-full py-8 font-bold rounded-3xl bg-gradient-to-r from-[#e52dcd] to-[#FCCF40]"
             asChild
           >
-            <Link
-              href={
-                'https://www.instagram.com/luiz100x/profilecard/?igsh=eWV0emZzZW5lY2Vu'
-              }
-            >
+            <Link href={'https://www.instagram.com/luiz100x'}>
               <Instagram />
               Acessar perfil do instagram
             </Link>
