@@ -6,7 +6,7 @@ import { PIX_DATA } from '@/lib/constants'
 
 export function PixInfinit() {
   return (
-    <Marquee className="overflow-x-hidden">
+    <Marquee speed={50} className="overflow-x-hidden">
       {PIX_DATA.map((item, index) => (
         <div
           key={index}

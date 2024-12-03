@@ -6,8 +6,8 @@ import { PixInfinit } from '@/components/pix-infinit'
 
 export default function Login() {
   return (
-    <div className="h-screen w-screen flex justify-center items-center flex-col gap-12 px-8">
-      <div className="absolute top-10">
+    <div className="h-screen max-w-screen overflow-hidden flex justify-center items-center flex-col gap-12 px-8">
+      <div className="fixed top-10">
         <PixInfinit />
       </div>
       <Image src={'/LOGO.png'} width={200} height={80} alt="" />
