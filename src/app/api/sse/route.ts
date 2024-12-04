@@ -8,7 +8,15 @@ export async function GET(req: Request) {
       const clientId = Date.now().toString() // Gerar um ID único para o cliente
       addClient(clientId, controller) // Adiciona o cliente ao gerenciamento de clientes
 
+      // Enviar um evento de exemplo a cada 5 segundos
+      const sendHeartbeat = setInterval(() => {
+        controller.enqueue(
+          `data: ${JSON.stringify({ message: 'heartbeat' })}\n\n`,
+        )
+      }, 5000)
+
       req.signal.addEventListener('abort', () => {
+        clearInterval(sendHeartbeat) // Limpa o intervalo quando o cliente desconecta
         removeClient(clientId) // Remove o cliente do gerenciamento
       })
     },
