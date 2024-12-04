@@ -1,4 +1,4 @@
-import SignalComponent from './signal'
+import { SignalComponent } from './signal'
 
 export default function Aviator() {
   return (

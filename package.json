@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "bun server.ts",
+    "dev": "next dev",
     "build": "next build",
     "start": "NODE_ENV=production bun server.ts",
     "lint": "next lint"
@@ -42,6 +42,7 @@
     "cmdk": "1.0.0",
     "date-fns": "^4.1.0",
     "embla-carousel-react": "^8.5.1",
+    "express": "^4.21.1",
     "input-otp": "^1.4.1",
     "lucide-react": "^0.462.0",
     "next": "15.0.3",

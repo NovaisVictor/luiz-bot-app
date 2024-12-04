@@ -1,157 +1,96 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
+
+import { Loader2 } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 
-const SignalComponent = () => {
-  const baseUrl = 'https://api.velas10x.com.br/game/6'
-  const requestHeaders = {
-    'Content-Type': 'application/json',
-  }
-
-  // Defina o tipo do estado como um array de strings
-  const [messagesResult, setMessagesResult] = useState<string[]>([])
-  const [signalMessage, setSignalMessage] =
-    useState<string>('Iniciando análise')
-  const [signalValue, setSignalValue] = useState<number>(2)
-  const [protectionText, setProtectionText] = useState<string>('')
-  const [afterText, setAfterText] = useState<string>('')
-  const [loading, setLoading] = useState<boolean>(true)
-
-  const messages = [
-    'Buscando padrões',
-    'Analisando as velas',
-    'Processando dados',
-    'Procurando a melhor oportunidade de entrada',
-  ]
-
-  const getSignals = async () => {
-    const response = await fetch(`${baseUrl}`, {
-      method: 'GET',
-      headers: requestHeaders,
-    })
-
-    if (response.ok) {
-      const signal = await response.json()
-      if (signal.signalEntity.message_result_signal) {
-        const message = signal.signalEntity.message_result_signal
-        if (!messagesResult.includes(message)) {
-          setMessagesResult((prev) => [message, ...prev])
-        }
-      }
-      return signal
-    } else {
-      const respError = await response.json()
-      alert(`${respError.message}`)
-    }
-  }
-
-  const renderSignal = async () => {
-    setLoading(true)
-    const signal = await getSignals()
-
-    const message =
-      signal?.signalEntity?.message_signal === 'Analisando...'
-        ? 'Iniciando análise'
-        : signal?.signalEntity?.message_signal || ''
-
-    setSignalMessage(message)
-
-    if (signal?.signalEntity?.number_signal) {
-      setLoading(false)
-      setSignalValue(signal.signalEntity.number_signal)
-      setProtectionText('Até 3 Proteções')
-      setAfterText(
-        "<p class='text-green-500'>Alto: 2 x</p> <p class='text-red-600'>Baixo: 10 x</p>",
-      )
-    } else {
-      setLoading(true)
-      setSignalValue(0)
-      setProtectionText('')
-      setAfterText('')
-    }
-  }
-
-  const updateMessageAnalytics = () => {
-    const randomIndex = Math.floor(Math.random() * messages.length)
-    setSignalMessage(messages[randomIndex])
-  }
+type aviatorSignal = {
+  standart: string
+  entrance: number
+  loading: boolean
+}
+export function SignalComponent() {
+  const [data, setData] = useState<aviatorSignal>({
+    standart: 'Analisando',
+    entrance: 2,
+    loading: true,
+  })
 
   useEffect(() => {
-    const intervalId = setInterval(renderSignal, 1000)
-    const signalsInterval = setInterval(updateMessageAnalytics, 8000)
-    renderSignal()
+    const eventSource = new EventSource('/api/sse')
+
+    eventSource.onmessage = (event) => {
+      const newData = JSON.parse(event.data)
+      setData(newData)
+    }
 
     return () => {
-      clearInterval(intervalId)
-      clearInterval(signalsInterval)
+      eventSource.close()
     }
-  }, [renderSignal, updateMessageAnalytics])
-
-  const createHistoric = () => {
-    return messagesResult.map((message, index) => {
-      const parts = message.split('-')
-      const colorClass =
-        Number(parts[1]) >= 2 ? 'text-green-500' : 'text-red-600'
-      return (
-        <li
-          key={index}
-          className={`min-w-[160px] text-xs bg-black p-2 rounded-lg ${colorClass}`}
-        >
-          {`${parts[0]} - ${parts[1]}`}
-        </li>
-      )
-    })
-  }
-
+  }, [])
   return (
-    <div className="bg-accent p-3 rounded-2xl flex flex-col gap-5 overflow-x-hidden">
-      <div className="flex items-center justify-center gap-2">
-        <span className="flex flex-col gap-2">
-          <h3>Entrar após:</h3>
-          <div className="flex items-center justify-center bg-black rounded-lg h-12">
-            {loading ? (
-              <Loader />
+    <div className="bg-gray-900 text-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
+      <div className="mb-4">
+        <h2 className="text-lg font-bold">Entrar após:</h2>
+        <div className="bg-gray-800 p-4 rounded-lg text-center">
+          <span className="text-2xl">
+            {data.entrance <= 0 ? (
+              <div className="flex items-center justify-center gap-2">
+                <p>Analisando padrão..</p>
+                <Loader2 className="animate-spin" />
+              </div>
             ) : (
-              <p
-                className={`signalContainer ${signalValue >= 2 ? 'text-green-500' : 'text-red-600'}`}
-              >
-                {signalValue} x
-              </p>
+              `${data.entrance}x`
             )}
-          </div>
-        </span>
+          </span>
+        </div>
       </div>
-      <div className="flex justify-between">
-        <span className="flex flex-col gap-2">
-          <h3>Proteções:</h3>
-          <div className="flex items-center justify-center bg-black rounded-lg h-12">
-            <p className="protection">{protectionText}</p>
-          </div>
-        </span>
-        <span className="flex flex-col gap-2">
-          <h3>Sair após:</h3>
-          <div className="flex items-center justify-center bg-black rounded-lg h-12">
-            <p
-              className="after"
-              dangerouslySetInnerHTML={{ __html: afterText }}
-            />
-          </div>
-        </span>
+
+      <div className="mb-4">
+        <h2 className="text-lg font-bold">Proteções:</h2>
+        <div className="bg-gray-800 p-4 rounded-lg text-center">
+          <span>
+            {data.loading ? (
+              <div className="flex items-center justify-center gap-2">
+                <p>Analisando padrão..</p>
+                <Loader2 className="animate-spin" />
+              </div>
+            ) : (
+              data.standart
+            )}
+          </span>
+        </div>
       </div>
-      <div className="flex items-center justify-center text-center text-white bg-primary rounded-lg p-2">
-        {signalMessage}
-      </div>
-      <div className="flex flex-col text-white">
-        <ul className="flex gap-2 overflow-x-scroll whitespace-nowrap">
-          {createHistoric()}
-        </ul>
+
+      <div className="flex justify-between gap-4 mb-4">
+        <div className="w-full">
+          <h2 className="text-lg font-bold">Proteções:</h2>
+          <div className="bg-gray-800 h-16 flex items-center justify-center rounded-lg text-center">
+            <span className="text-white">
+              {data.loading ? (
+                <div className="flex items-center justify-center gap-2">
+                  <p>Analisando padrão..</p>
+                  <Loader2 className="animate-spin" />
+                </div>
+              ) : (
+                data.standart
+              )}
+            </span>
+          </div>
+        </div>
+        <div className="w-full">
+          <h2 className="text-lg font-bold">Sair após:</h2>
+          <div className="flex justify-between bg-gray-800 h-16 p-2 rounded-lg">
+            <div>
+              <span className="block">
+                Protetora: <span className="text-red-500">2 x</span>
+              </span>
+              <span className="block">
+                Potencializadora: <span className="text-red-500">10 x</span>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
 }
-
-const Loader = () => (
-  <div className="loader border-3 border-solid border-blue-600 border-t-transparent rounded-full w-6 h-6 animate-spin"></div>
-)
-
-export default SignalComponent
