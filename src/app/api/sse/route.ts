@@ -1,25 +1,18 @@
+'use client'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from 'next/server'
-
-let clients: Array<ReadableStreamDefaultController<any>> = []
-
-// Função para enviar dados para todos os clientes conectados
-export const sendEvent = (data: any) => {
-  clients.forEach((client) => {
-    client.enqueue(`data: ${JSON.stringify(data)}\n\n`)
-  })
-}
+import { sendEvent, addClient, removeClient } from './event-sender'
 
 export async function GET(req: Request) {
   // Criar um ReadableStream para enviar eventos
   const stream = new ReadableStream({
     start(controller) {
       // Adicionar o controlador à lista de clientes
-      clients.push(controller)
+      addClient(controller)
 
       // Remover o cliente da lista quando a conexão for fechada
       req.signal.addEventListener('abort', () => {
-        clients = clients.filter((c) => c !== controller)
+        removeClient(controller)
       })
     },
   })

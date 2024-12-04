@@ -1,7 +1,7 @@
 'use server'
 import { NextRequest } from 'next/server'
 import { z } from 'zod'
-import { sendEvent } from '../sse/route'
+import { sendEvent } from '../sse/event-sender'
 
 type AviatorHistory = {
   id: string
@@ -60,9 +60,12 @@ export async function POST(req: NextRequest) {
 
     const lastEntrence = recentEvents[recentEvents.length - 1]
     const lastValue = parseFloat(lastEntrence.valor)
-
+    const secondLastValue =
+      recentEvents.length > 1
+        ? parseFloat(recentEvents[recentEvents.length - 2].valor)
+        : null
     // Verifica padrão de repetição de vela rosa
-    if (lastValue >= 10) {
+    if (lastValue >= 10 && secondLastValue !== null && secondLastValue < 10) {
       sendEvent({
         entrance: lastEntrence.valor,
         standart: 'Padrão Repetição de Vela Rosa',

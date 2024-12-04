@@ -11,7 +11,7 @@ type aviatorSignal = {
 export function SignalComponent() {
   const [data, setData] = useState<aviatorSignal>({
     standart: 'Analisando',
-    entrance: 2,
+    entrance: 0,
     loading: true,
   })
 
