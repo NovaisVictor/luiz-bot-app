@@ -52,18 +52,33 @@ export async function POST(req: NextRequest) {
   try {
     const data = await req.json()
     const { aviator_history: aviatorHistory } = aviatorWebhookSchema.parse(data)
-    recentEvents.push(aviatorHistory[0])
 
+    recentEvents.push(aviatorHistory[0])
     if (recentEvents.length > 10) {
-      recentEvents.shift() // Remove o evento mais antigo
+      recentEvents.shift()
     }
+
+    // sendEvent({
+    //   entrance: 2,
+    //   standart: 'Padrão Repetição de Vela Rosa',
+    //   loadign: false,
+    // })
+    // return new Response(
+    //   JSON.stringify({
+    //     status: 'success',
+    //     message: 'Nenhum evento anterior encontrado.',
+    //   }),
+    //   { status: 200 },
+    // )
 
     const lastEntrence = recentEvents[recentEvents.length - 1]
     const lastValue = parseFloat(lastEntrence.valor)
+
     const secondLastValue =
       recentEvents.length > 1
         ? parseFloat(recentEvents[recentEvents.length - 2].valor)
         : null
+
     // Verifica padrão de repetição de vela rosa
     if (lastValue >= 10 && (secondLastValue === null || secondLastValue < 10)) {
       sendEvent({

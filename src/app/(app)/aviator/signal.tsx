@@ -3,13 +3,13 @@
 import { Loader2 } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 
-type aviatorSignal = {
+type AviatorSignal = {
   standart: string
   entrance: number
   loading: boolean
 }
 export function SignalComponent() {
-  const [data, setData] = useState<aviatorSignal>({
+  const [data, setData] = useState<AviatorSignal>({
     standart: 'Analisando',
     entrance: 0,
     loading: true,
@@ -20,13 +20,19 @@ export function SignalComponent() {
 
     eventSource.onmessage = (event) => {
       const newData = JSON.parse(event.data)
-      setData(newData)
+      setData(newData) // Atualiza o estado com os novos dados recebidos
+    }
+
+    // Lida com erros, se necessário
+    eventSource.onerror = (error) => {
+      console.error('Erro no EventSource:', error)
+      eventSource.close() // Fecha a conexão em caso de erro
     }
 
     return () => {
-      eventSource.close()
+      eventSource.close() // Fecha a conexão quando o componente é desmontado
     }
-  }, [])
+  })
   return (
     <div className="bg-gray-900 text-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
       <div className="mb-4">

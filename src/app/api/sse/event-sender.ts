@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import redis from '@/lib/redis'
-
 const clients: { [key: string]: ReadableStreamDefaultController<any> } = {}
 
 export const sendEvent = (data: any) => {
@@ -19,12 +17,4 @@ export const addClient = (
 
 export const removeClient = (clientId: string) => {
   delete clients[clientId]
-}
-
-export const addClientToRedis = async (clientId: string) => {
-  await redis.lpush('clients', clientId)
-}
-
-export const removeClientFromRedis = async (clientId: string) => {
-  await redis.lrem('clients', 0, clientId)
 }
