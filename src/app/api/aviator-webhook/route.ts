@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
         ? parseFloat(recentEvents[recentEvents.length - 2].valor)
         : null
     // Verifica padrão de repetição de vela rosa
-    if (lastValue >= 10 && secondLastValue !== null && secondLastValue < 10) {
+    if (lastValue >= 10 && (secondLastValue === null || secondLastValue < 10)) {
       sendEvent({
         entrance: lastEntrence.valor,
         standart: 'Padrão Repetição de Vela Rosa',

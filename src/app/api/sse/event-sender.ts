@@ -1,21 +1,30 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-let clients: Array<ReadableStreamDefaultController<any>> = []
 
-// Função para enviar dados para todos os clientes conectados
+import redis from '@/lib/redis'
+
+const clients: { [key: string]: ReadableStreamDefaultController<any> } = {}
+
 export const sendEvent = (data: any) => {
-  clients.forEach((client) => {
-    client.enqueue(`data: ${JSON.stringify(data)}\n\n`)
+  Object.values(clients).forEach((controller) => {
+    controller.enqueue(`data: ${JSON.stringify(data)}\n\n`)
   })
 }
 
-// Função para adicionar um cliente
-export const addClient = (controller: ReadableStreamDefaultController<any>) => {
-  clients.push(controller)
-}
-
-// Função para remover um cliente
-export const removeClient = (
+export const addClient = (
+  clientId: string,
   controller: ReadableStreamDefaultController<any>,
 ) => {
-  clients = clients.filter((c) => c !== controller)
+  clients[clientId] = controller
+}
+
+export const removeClient = (clientId: string) => {
+  delete clients[clientId]
+}
+
+export const addClientToRedis = async (clientId: string) => {
+  await redis.lpush('clients', clientId)
+}
+
+export const removeClientFromRedis = async (clientId: string) => {
+  await redis.lrem('clients', 0, clientId)
 }
