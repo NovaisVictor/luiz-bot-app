@@ -16,23 +16,33 @@ export function SignalComponent() {
   })
 
   useEffect(() => {
-    const eventSource = new EventSource('/api/sse')
-
-    eventSource.onmessage = (event) => {
-      const newData = JSON.parse(event.data)
-      setData(newData) // Atualiza o estado com os novos dados recebidos
+    const fetchSignalData = async () => {
+      try {
+        const response = await fetch('/api/aviator-history') // Substitua pelo seu endpoint
+        if (!response.ok) {
+          throw new Error('Erro ao buscar dados do sinal')
+        }
+        const result = await response.json()
+        setData({
+          standart: result.standart,
+          entrance: result.entrance,
+          loading: result.loading,
+        })
+      } catch (error) {
+        console.error('Erro ao buscar dados da API:', error)
+        // Você pode definir um estado de erro aqui se desejar
+      }
     }
 
-    // Lida com erros, se necessário
-    eventSource.onerror = (error) => {
-      console.error('Erro no EventSource:', error)
-      eventSource.close() // Fecha a conexão em caso de erro
-    }
+    fetchSignalData()
 
-    return () => {
-      eventSource.close() // Fecha a conexão quando o componente é desmontado
-    }
-  })
+    // Opcional: configurar um intervalo para buscar dados a cada X segundos
+    const interval = setInterval(fetchSignalData, 2000) // 10 segundos
+
+    // Limpeza do intervalo ao desmontar o componente
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <div className="bg-gray-900 text-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
       <div className="mb-4">
