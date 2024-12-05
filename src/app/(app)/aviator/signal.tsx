@@ -77,7 +77,7 @@ export function SignalComponent() {
         </div>
       </div>
 
-      <div className="flex justify-between gap-4 mb-4">
+      <div className="flex justify-between gap-2 mb-4">
         <div className="w-full">
           <h2 className="text-lg font-bold">Proteções:</h2>
           <div className="bg-gray-800 flex items-center justify-center rounded-lg text-center h-full">
@@ -88,12 +88,12 @@ export function SignalComponent() {
           <h2 className="text-lg font-bold">Sair após:</h2>
           <div className="bg-gray-800 flex items-center justify-center rounded-lg text-center h-full">
             <div className="flex justify-between w-full">
-              <div>
+              <div className="text-sm px-1">
                 <span className="block">
-                  Protetora: <span className="text-red-500">2 x</span>
+                  Protetora: <span className="text-red-500">2x</span>
                 </span>
                 <span className="block">
-                  Potencializadora: <span className="text-red-500">10 x</span>
+                  Potencializadora: <span className="text-red-500">10x</span>
                 </span>
               </div>
             </div>
