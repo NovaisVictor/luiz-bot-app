@@ -20,7 +20,6 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { VideoPlayer } from '@/components/video-player'
-import { Play } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState, type ChangeEvent } from 'react'
 
@@ -224,17 +223,6 @@ export default function Course() {
             thumbnailSrc="https://images.converteai.net/cd42e2f1-44f3-470d-bb0a-328b0476d231/players/6750b448b843803ec861d385/thumbnail.jpg"
             scriptSrc="https://scripts.converteai.net/cd42e2f1-44f3-470d-bb0a-328b0476d231/players/6750b448b843803ec861d385/player.js"
           />
-        </GradiantCard>
-      </div>
-      <div className="flex flex-col">
-        <h1 className="text-xl font-bold text-center uppercase">
-          Como efetuar o saque após fazer o seu lucro
-          {/* 04 - <span className="text-primary">Pegando os sinais</span> */}
-        </h1>
-        <GradiantCard>
-          <div className="py-14 flex justify-center">
-            <Play className="bg-primary rounded-full p-4" size={64} />
-          </div>
         </GradiantCard>
       </div>
       <div className="flex flex-col">
