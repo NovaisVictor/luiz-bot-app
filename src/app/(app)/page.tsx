@@ -32,11 +32,7 @@ export default function Home() {
       <GradiantCard>
         <div
           id="vid_674bdeafc13d82038b390b6e"
-          style={{
-            position: 'relative',
-            width: '100%',
-            padding: '56.25% 0 0',
-          }}
+          style={{ position: 'relative', width: '100%', padding: '56.25% 0 0' }}
         >
           <img
             id="thumb_674bdeafc13d82038b390b6e"
