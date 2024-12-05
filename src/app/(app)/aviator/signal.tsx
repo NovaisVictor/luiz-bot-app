@@ -62,7 +62,7 @@ export function SignalComponent() {
       </div>
 
       <div className="mb-4">
-        <h2 className="text-lg font-bold">Proteções:</h2>
+        <h2 className="text-lg font-bold">Estratégia:</h2>
         <div className="bg-gray-800 p-4 rounded-lg text-center">
           <span>
             {data.loading ? (
@@ -80,29 +80,22 @@ export function SignalComponent() {
       <div className="flex justify-between gap-4 mb-4">
         <div className="w-full">
           <h2 className="text-lg font-bold">Proteções:</h2>
-          <div className="bg-gray-800 h-16 flex items-center justify-center rounded-lg text-center">
-            <span className="text-white">
-              {data.loading ? (
-                <div className="flex items-center justify-center gap-2">
-                  <p>Analisando padrão..</p>
-                  <Loader2 className="animate-spin" />
-                </div>
-              ) : (
-                data.standart
-              )}
-            </span>
+          <div className="bg-gray-800 flex items-center justify-center rounded-lg text-center h-full">
+            <span className="text-white">Até 3 proteções</span>
           </div>
         </div>
         <div className="w-full">
           <h2 className="text-lg font-bold">Sair após:</h2>
-          <div className="flex justify-between bg-gray-800 h-16 p-2 rounded-lg">
-            <div>
-              <span className="block">
-                Protetora: <span className="text-red-500">2 x</span>
-              </span>
-              <span className="block">
-                Potencializadora: <span className="text-red-500">10 x</span>
-              </span>
+          <div className="bg-gray-800 flex items-center justify-center rounded-lg text-center h-full">
+            <div className="flex justify-between w-full">
+              <div>
+                <span className="block">
+                  Protetora: <span className="text-red-500">2 x</span>
+                </span>
+                <span className="block">
+                  Potencializadora: <span className="text-red-500">10 x</span>
+                </span>
+              </div>
             </div>
           </div>
         </div>

@@ -19,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { VideoPlayer } from '@/components/video-player'
 import { Play } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState, type ChangeEvent } from 'react'
@@ -188,40 +189,11 @@ export default function Course() {
           {/* 01 - <span className="text-primary">Mostrando o App</span> */}
         </h1>
         <GradiantCard>
-          <div
-            id="vid_6750b4363ed02d63e31aec34"
-            style={{
-              position: 'relative',
-              width: '100%',
-              padding: '56.25% 0 0',
-            }}
-          >
-            <img
-              id="thumb_6750b4363ed02d63e31aec34"
-              src="https://images.converteai.net/cd42e2f1-44f3-470d-bb0a-328b0476d231/players/6750b4363ed02d63e31aec34/thumbnail.jpg"
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                display: 'block',
-              }}
-              alt="thumbnail"
-            />
-            <div
-              id="backdrop_6750b4363ed02d63e31aec34"
-              style={{
-                WebkitBackdropFilter: 'blur(5px)',
-                backdropFilter: 'blur(5px)',
-                position: 'absolute',
-                top: 0,
-                height: '100%',
-                width: '100%',
-              }}
-            />
-          </div>
+          <VideoPlayer
+            videoId="vid_6750b4363ed02d63e31aec34"
+            thumbnailSrc="https://images.converteai.net/cd42e2f1-44f3-470d-bb0a-328b0476d231/players/6750b4363ed02d63e31aec34/thumbnail.jpg"
+            scriptSrc="https://scripts.converteai.net/cd42e2f1-44f3-470d-bb0a-328b0476d231/players/6750b4363ed02d63e31aec34/player.js"
+          />
         </GradiantCard>
         <Button size={'sm'} className="w-11/12 mx-auto mt-4">
           <Link href={'/sign-up'}>Clique aqui e crie sua conta</Link>
@@ -234,40 +206,11 @@ export default function Course() {
           {/* 02 - <span className="text-primary">Gerenciamento de Banca</span> */}
         </h1>
         <GradiantCard>
-          <div
-            id="vid_6750b53e28e5bef581fab376"
-            style={{
-              position: 'relative',
-              width: '100%',
-              padding: '56.25% 0 0',
-            }}
-          >
-            <img
-              id="thumb_6750b53e28e5bef581fab376"
-              src="https://images.converteai.net/cd42e2f1-44f3-470d-bb0a-328b0476d231/players/6750b53e28e5bef581fab376/thumbnail.jpg"
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                display: 'block',
-              }}
-              alt="thumbnail"
-            />
-            <div
-              id="backdrop_6750b53e28e5bef581fab376"
-              style={{
-                WebkitBackdropFilter: 'blur(5px)',
-                backdropFilter: 'blur(5px)',
-                position: 'absolute',
-                top: 0,
-                height: '100%',
-                width: '100%',
-              }}
-            />
-          </div>
+          <VideoPlayer
+            videoId="vid_6750b53e28e5bef581fab376"
+            thumbnailSrc="https://images.converteai.net/cd42e2f1-44f3-470d-bb0a-328b0476d231/players/6750b53e28e5bef581fab376/thumbnail.jpg"
+            scriptSrc="https://scripts.converteai.net/cd42e2f1-44f3-470d-bb0a-328b0476d231/players/6750b53e28e5bef581fab376/player.js"
+          />
         </GradiantCard>
       </div>
       <div className="flex flex-col">
@@ -276,40 +219,11 @@ export default function Course() {
           {/* 03 - <span className="text-primary">Como os Slots funcionam</span> */}
         </h1>
         <GradiantCard>
-          <div
-            id="vid_6750b448b843803ec861d385"
-            style={{
-              position: 'relative',
-              width: '100%',
-              padding: '56.25% 0 0',
-            }}
-          >
-            <img
-              id="thumb_6750b448b843803ec861d385"
-              src="https://images.converteai.net/cd42e2f1-44f3-470d-bb0a-328b0476d231/players/6750b448b843803ec861d385/thumbnail.jpg"
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                display: 'block',
-              }}
-              alt="thumbnail"
-            />
-            <div
-              id="backdrop_6750b448b843803ec861d385"
-              style={{
-                WebkitBackdropFilter: 'blur(5px)',
-                backdropFilter: 'blur(5px)',
-                position: 'absolute',
-                top: 0,
-                height: '100%',
-                width: '100%',
-              }}
-            />
-          </div>
+          <VideoPlayer
+            videoId="vid_6750b448b843803ec861d385"
+            thumbnailSrc="https://images.converteai.net/cd42e2f1-44f3-470d-bb0a-328b0476d231/players/6750b448b843803ec861d385/thumbnail.jpg"
+            scriptSrc="https://scripts.converteai.net/cd42e2f1-44f3-470d-bb0a-328b0476d231/players/6750b448b843803ec861d385/player.js"
+          />
         </GradiantCard>
       </div>
       <div className="flex flex-col">
@@ -329,40 +243,11 @@ export default function Course() {
           {/* 05 - <span className="text-primary">Padrão de acompanhamento</span> */}
         </h1>
         <GradiantCard>
-          <div
-            id="vid_6750b44481e9e1422382975d"
-            style={{
-              position: 'relative',
-              width: '100%',
-              padding: '56.25% 0 0',
-            }}
-          >
-            <img
-              id="thumb_6750b44481e9e1422382975d"
-              src="https://images.converteai.net/cd42e2f1-44f3-470d-bb0a-328b0476d231/players/6750b44481e9e1422382975d/thumbnail.jpg"
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                display: 'block',
-              }}
-              alt="thumbnail"
-            />
-            <div
-              id="backdrop_6750b44481e9e1422382975d"
-              style={{
-                WebkitBackdropFilter: 'blur(5px)',
-                backdropFilter: 'blur(5px)',
-                position: 'absolute',
-                top: 0,
-                height: '100%',
-                width: '100%',
-              }}
-            />
-          </div>
+          <VideoPlayer
+            videoId="vid_6750b44481e9e1422382975d"
+            thumbnailSrc="https://images.converteai.net/cd42e2f1-44f3-470d-bb0a-328b0476d231/players/6750b44481e9e1422382975d/thumbnail.jpg"
+            scriptSrc="https://scripts.converteai.net/cd42e2f1-44f3-470d-bb0a-328b0476d231/players/6750b44481e9e1422382975d/player.js"
+          />
         </GradiantCard>
       </div>
       <InstallAppCard />
