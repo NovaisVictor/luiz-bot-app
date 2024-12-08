@@ -37,7 +37,7 @@ export function SignalComponent() {
     fetchSignalData()
 
     // Opcional: configurar um intervalo para buscar dados a cada X segundos
-    const interval = setInterval(fetchSignalData, 2000) // 10 segundos
+    const interval = setInterval(fetchSignalData, 1000) // 10 segundos
 
     // Limpeza do intervalo ao desmontar o componente
     return () => clearInterval(interval)
