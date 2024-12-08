@@ -30,8 +30,8 @@ export async function GET(req: NextRequest) {
     const aviatorHistory = aviatorHistoryArraySchema.parse(data)
 
     // Análise dos padrões diretamente do aviatorHistory
-    const lastFour = aviatorHistory.slice(-4)
-    const lastThree = aviatorHistory.slice(-3)
+    const lastFour = aviatorHistory.slice(0, 4) // Pega os 4 primeiros, que são os mais recentes
+    const lastThree = aviatorHistory.slice(0, 3) // Pega os 3 primeiros, que são os mais recentes
 
     // Verifica padrão roxo
     const allInRangePurple = lastThree.every((event) => {
@@ -51,7 +51,7 @@ export async function GET(req: NextRequest) {
       parseFloat(lastFour[3].valor) < 10.0
 
     // Verifica o último valor
-    const lastEntrence = aviatorHistory[aviatorHistory.length - 1]
+    const lastEntrence = aviatorHistory[0] // O último evento é o primeiro no array
     const lastValue = parseFloat(lastEntrence.valor)
 
     // Inicializa a resposta padrão
@@ -64,8 +64,7 @@ export async function GET(req: NextRequest) {
     // Verifica padrão de repetição de vela rosa
     if (
       lastValue >= 10 &&
-      (aviatorHistory.length < 2 ||
-        parseFloat(aviatorHistory[aviatorHistory.length - 2].valor) < 10)
+      (aviatorHistory.length < 2 || parseFloat(aviatorHistory[1].valor) < 10)
     ) {
       responsePayload = {
         entrance: lastValue,
