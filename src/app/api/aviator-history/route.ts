@@ -39,16 +39,17 @@ export async function GET(req: NextRequest) {
       return valor >= 2.0 && valor <= 9.99
     })
 
-    // Verifica padrão azul quebrado
-    const allInRangeBlueBroken = lastFour.slice(0, 3).every((event) => {
+    const firstInRange =
+      parseFloat(lastFour[0].valor) >= 2.0 &&
+      parseFloat(lastFour[0].valor) < 10.0 // Verifica se o primeiro evento está entre 2.0 e 10.0
+
+    const allOthersInRange = lastFour.slice(1).every((event) => {
       const valor = parseFloat(event.valor)
-      return valor >= 1.0 && valor < 2.0
+      return valor < 2.0 // Verifica se os índices 1, 2 e 3 são todos menores que 2.0
     })
 
-    const nextInRange =
-      lastFour.length === 4 &&
-      parseFloat(lastFour[3].valor) >= 2.0 &&
-      parseFloat(lastFour[3].valor) < 10.0
+    // Agora você pode usar as variáveis firstInRange e allOthersInRange
+    const isPatternBlueBroken = firstInRange && allOthersInRange
 
     // Verifica o último valor
     const lastEntrence = aviatorHistory[0] // O último evento é o primeiro no array
@@ -61,19 +62,8 @@ export async function GET(req: NextRequest) {
       standart: '',
     }
 
-    // Verifica padrão de repetição de vela rosa
-    if (
-      lastValue >= 10 &&
-      (aviatorHistory.length < 2 || parseFloat(aviatorHistory[1].valor) < 10)
-    ) {
-      responsePayload = {
-        entrance: lastValue,
-        loading: false,
-        standart: 'Padrão Repetição de Vela Rosa',
-      }
-    }
-    // Padrão sequencial de roxo
-    else if (allInRangePurple) {
+    // Verifica padrão sequencial roxo
+    if (allInRangePurple) {
       responsePayload = {
         entrance: lastValue,
         loading: false,
@@ -81,7 +71,7 @@ export async function GET(req: NextRequest) {
       }
     }
     // Padrão quebra de sequencial
-    else if (allInRangeBlueBroken && nextInRange) {
+    else if (isPatternBlueBroken) {
       responsePayload = {
         entrance: lastValue,
         loading: false,
