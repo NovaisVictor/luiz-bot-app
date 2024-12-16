@@ -27,15 +27,19 @@ export async function GET() {
     // Valida o array de históricos
     const aviatorHistory = aviatorHistoryArraySchema.parse(data)
 
-    const lastSix = aviatorHistory.slice(0, 6) // Obtém os 6 primeiros elementos
+    const lastFive = aviatorHistory.slice(0, 5) // Obtém os 5 primeiros elementos
 
     // Inicializa um contador para a sequência
     let consecutiveCount = 0
     let allInRangePurple = false
     let entranceValue = 0
     // Percorre os 6 elementos
-    for (const event of lastSix) {
+    for (const event of lastFive) {
       const valor = parseFloat(event.valor)
+
+      if (valor > 10) {
+        allInRangePurple = false
+      }
 
       if (consecutiveCount === 0) {
         entranceValue = valor // Armazena o primeiro valor da sequência
@@ -55,19 +59,23 @@ export async function GET() {
       }
     }
 
-    const lastSeven = aviatorHistory.slice(0, 7) // Obtém os 7 primeiros elementos
+    const lastSix = aviatorHistory.slice(0, 6) // Obtém os 6 primeiros elementos
 
     let entranceValueBlue = 0 // Para armazenar o valor do primeiro elemento da sequência azul
     let isPatternBlueBroken = false // Para indicar se o padrão azul foi quebrado
 
-    for (let i = 0; i < lastSeven.length; i++) {
-      const valor = parseFloat(lastSeven[i].valor)
+    for (let i = 0; i < lastSix.length; i++) {
+      const valor = parseFloat(lastSix[i].valor)
+
+      if (valor > 10) {
+        isPatternBlueBroken = false
+      }
 
       if (valor >= 2.0 && valor < 10.0) {
         entranceValueBlue = valor // Armazena o valor do primeiro elemento da sequência
 
-        if (i + 3 < lastSeven.length) {
-          const nextThreeValues = lastSeven.slice(i + 1, i + 4) // Pega os próximos 3 valores
+        if (i + 3 < lastSix.length) {
+          const nextThreeValues = lastSix.slice(i + 1, i + 4) // Pega os próximos 3 valores
           const allBelowTwo = nextThreeValues.every(
             (event) => parseFloat(event.valor) < 2.0,
           ) // Verifica se todos estão abaixo de 2.0
